@@ -45,8 +45,9 @@
       <h2>Battle Log</h2>
       <ul>
         <li v-for="action in gameLog">
-          <span class="log--player" v-if="action.actionBy==='player'">You </span>
-          <span class="log--monster" v-else>Monster </span>
+          <span :class="[action.actionBy==='player'?'log--player':'log--monster']">
+            {{action.actionBy==='player'?'You ':'Monster '}}
+          </span>
           <span v-if="action.actionType==='attack'">attacked and dealed <span
               class="log--damage">{{action.value}}</span> </span>
           <span v-else-if="action.actionType==='special attack'">used special attack and dealed <span
